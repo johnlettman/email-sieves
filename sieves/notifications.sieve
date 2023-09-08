@@ -2,16 +2,7 @@ require "fileinto";
 require "imap4flags";
 require "vnd.proton.expire";
 
-#  ___         _                            
-# |_ _|_ _  __| |_ __ _ __ _ _ _ __ _ _ __  
-#  | || ' \(_-<  _/ _` / _` | '_/ _` | '  \ 
-# |___|_||_/__/\__\__,_\__, |_| \__,_|_|_|_|
-#                      |___/                
-if address :is "from" "no-reply@mail.instagram.com" {
-    fileinto "Notifications/Instagram";
-    expire "day" "30";
-    stop;
-}
+
 
 #  ___ _ _   _    _ _   
 # | __(_) |_| |__(_) |_ 
