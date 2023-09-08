@@ -30,6 +30,12 @@ done
 folders=("${!folder_set[@]}")
 tags=("${!tag_set[@]}")
 
+# shellcheck disable=SC2207
+IFS=$'\n' folders=($(printf "%s\n" "${folders[@]}" | sort))
+
+# shellcheck disable=SC2207
+IFS=$'\n' tags=($(printf "%s\n" "${tags[@]}" | sort)) 
+
 # Remove the tags from folders
 for tag in "${tags[@]}"; do
   folders=("${folders[@]//${tag}}")
