@@ -21,6 +21,24 @@ if address :is "from" "autozone@em.autozone.com" {
     stop;
 }
 
+#  _  _     _    _         _  ___           
+# | || |___| |__| |__ _  _| |/ (_)_ _  __ _ 
+# | __ / _ \ '_ \ '_ \ || | ' <| | ' \/ _` |
+# |_||_\___/_.__/_.__/\_, |_|\_\_|_||_\__, |
+#                     |__/            |___/ 
+if address :is "from" "no_reply@hobbyking.com" {
+    if header :matches "subject" "*Shipment*for Order*" {
+        fileinto "Shipping";
+        fileinto "Order Shipped"; # tag
+    }
+    if header :matches "subject" "*New Order*" {
+        fileinto "Orders";
+        fileinto "Order Confirmed"; # tag
+    }
+
+    stop;
+}
+
 #  ___            _             
 # |   \ ___ _ __ (_)_ _  ___ ___
 # | |) / _ \ '  \| | ' \/ _ (_-<
